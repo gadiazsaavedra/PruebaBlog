@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends "AppBlog/padre.html" %}
+
+{% load static %}
+
+{% block contenido %}
+
+        {% if miFormulario.errors %}
+
+        <p>Error ...!!!</p>
+
+        {% endif %}
+
+        <form action="" method="POST">{% csrf_token %}
+
+                <table>
+
+                        {{ miFormulario.as_table }}
+                </table>
+
+                <input type="submit" value="Editar">
+
+        </form>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends "AppBlog/padre.html" %}
+
+{% load static %}
+
+        
+
+        {% block contenido %}
+
+
+    <form action="" method="POST">
+
+        {% csrf_token %}
+
+        {{form.as_p}}
+
+        <input type="submit" value="LOGIN">
+
+    </form>
+    <br>
+    
+    <h1>No sos usuario todavia..?? entonces registrate.</h1>
+    <br>
+    <form action="{% url 'Register' %}">
+        <input type="submit" value="Registrate " />
+    </form>
+
+    
+        {% endblock %}

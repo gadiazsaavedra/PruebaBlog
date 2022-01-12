@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends "AppBlog/padre.html" %}
+
+{% load static %}
+
+        <!--{% block contenido2 %}
+            <h1 class="masthead-heading text-uppercase mb-0">Lista de Bloggers</h1>
+        {% endblock %}-->
+
+        {% block contenido %}
+
+          <p>Acá tenemos todos los Blogs:</p> <br>
+          <ul>
+              {% for blog in object_list %}
+                  <li>
+
+                      <p>Titulo : {{ blog.title }}</p>
+
+                              <p>
+                                <a href="{% url 'Detail' blog.id %}">Ver más</a>
+                                <a href="{% url 'Edit' blog.id %}">Editar</a>
+                                <a href="{% url 'Delete' blog.id %}">Borrar</a>
+
+                              </p>
+
+                  </li>
+
+              {% endfor %}
+
+          </ul>
+         
+
+        {% endblock %}

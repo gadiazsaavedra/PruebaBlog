@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% extends "AppBlog/padre.html" %}
+
+{% load static %}
+
+        <!--{% block contenido2 %}
+            <h1 class="masthead-heading text-uppercase mb-0">Detalle del Blogger</h1>
+        {% endblock %}-->
+
+        {% block contenido %}
+
+          <p>Nombre del blogger: <em> {{ blogger.name}}</em></p>
+          <p>mail: <em> {{ blogger.email}}</em></p>
+          <p>Telefono: <em> {{ blogger.phone}}</em></p>
+          <p>Direccion: <em> {{ blogger.address}}</em></p>
+          <p>Ciudad: <em> {{ blogger.city}}</em></p>
+          <p>Pais: <em> {{ blogger.state}}</em></p>
+          <p>Codigo postal: <em> {{ blogger.zip}}</em></p>
+          <p>Website: <em> {{ blogger.website}}</em></p>
+          <p>Empresa: <em> {{ blogger.company}}</em></p>
+          <p>Descripcion: <em> {{ blogger.about}}</em></p>
+          <p>Fecha de creacion: <em> {{ blogger.created_at}}</em></p>
+          <p>Fecha de actualizacion: <em> {{ blogger.updated_at}}</em></p>
+
+          <p>
+
+            <a href="{% url 'List' %}">Regresar</a>
+
+          </p>
+         
+
+        {% endblock %}

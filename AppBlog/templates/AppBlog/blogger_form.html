@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends "AppBlog/padre.html" %}
+
+{% load static %}
+
+        <!--{% block contenido2 %}
+            <h1 class="masthead-heading text-uppercase mb-0">Detalle del blogger</h1>
+        {% endblock %}-->
+
+        {% block contenido %}
+
+              <form method="POST"> {% csrf_token %}
+
+                {{form.as_p}}
+
+                <input type="submit" value="Enviar"  />
+
+              </form>
+
+          
+
+            <a href="{% url 'List' %}">Regresar</a>
+
+          
+         
+
+        {% endblock %}
