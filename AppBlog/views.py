@@ -132,38 +132,45 @@ class BloggerDelete(DeleteView):
     
 
 def login_request(request):
-    
+
     if request.method =="POST":
-        
+
         form = AuthenticationForm(request, data = request.POST)
-        
-        if form.is_valid():
-            
-            usuario = form.cleaned_data.get("username")
-            contra = form.cleaned_data.get("password")
-            
-            user = authenticate(username=usuario, password = contra)
-            
-            if user is not None:
+
+        if not form.is_valid():
+            return render(
+                request,
+                "AppBlog/inicio.html",
+                {"mensaje": "FORMULARIO erroneo"},
+            )
+
+                        
+                        
                 
-                login(request, user)
-                
-                return render(request, "AppBlog/inicio.html", {"mensaje":f"BIENVENIDO al BLOG : {usuario}  !!!!"})
-                
-            else:
-                
-                return render(request, "AppBlog/inicio.html", {"mensaje":f"DATOS MALOS :(!!!!"})
-                
-            
+
+        usuario = form.cleaned_data.get("username")
+        contra = form.cleaned_data.get("password")
+
+        user = authenticate(username=usuario, password = contra)
+
+        if user is not None:
+
+            login(request, user)
+
+            return render(request, "AppBlog/inicio.html", {"mensaje":f"BIENVENIDO al BLOG : {usuario}  !!!!"})
+
         else:
             
-            return render(request, "AppBlog/inicio.html", {"mensaje":f"FORMULARIO erroneo"})
-            
-            
-    
-    
+            return render(
+                request,
+                "AppBlog/inicio.html",
+                {"mensaje": "DATOS MALOS :(!!!!"},
+            )
+
+                            
+
     form = AuthenticationForm()  #Formulario sin nada para hacer el login
-    
+
     return render(request, "AppBlog/login.html", {"form":form} )
 
 def register(request):
